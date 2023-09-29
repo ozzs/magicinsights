@@ -4,6 +4,7 @@ import Validator, { SchemaObject } from "ajv";
 
 const server = fastify();
 
+// TODO: Split to event-schemas.ts
 interface NewEventSchemaRequest {
   id: string;
   schema: SchemaObject;
@@ -60,6 +61,50 @@ server.delete<{ Params: DeleteEventSchemaRequest }>(
     }
 
     reply.status(200);
+    reply.send({ status: "OK" });
+  }
+);
+
+// TODO: Split to events.ts
+interface NewEventRequest {
+  schemaID: string;
+  data: any;
+}
+
+server.post<{ Body: NewEventRequest }>(
+  "/events",
+  async function (request, reply) {
+    const validator = new Validator({
+      strict: true,
+      allErrors: true,
+      strictSchema: true,
+    });
+
+    // Get schema from DB
+    const eventSchema = await db
+      .selectFrom("eventSchemas")
+      .selectAll()
+      .where("id", "=", request.body.schemaID)
+      .executeTakeFirst();
+
+    if (!eventSchema) {
+      reply.status(404);
+      reply.send({ error: "Event schema not found" });
+      return;
+    }
+
+    if (!validator.validate(eventSchema.schema, request.body.data)) {
+      reply.status(400);
+      reply.send({ error: validator.errors });
+      return;
+    }
+
+    await db
+      .insertInto("events")
+      .values({ eventSchemaID: request.body.schemaID, data: request.body.data })
+      .execute();
+
+    reply.status(201);
     reply.send({ status: "OK" });
   }
 );
