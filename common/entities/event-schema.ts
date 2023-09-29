@@ -8,8 +8,8 @@ import {
 
 export interface EventSchemasTable {
   id: string;
-  schema: any;
-  created_at: ColumnType<Date, string | undefined, never>;
+  schema: Record<string, any>;
+  created_at: ColumnType<Date, never, never>;
 }
 
 export type EventSchema = Selectable<EventSchemasTable>;

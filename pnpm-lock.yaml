@@ -16,9 +16,18 @@ importers:
 
   backend:
     dependencies:
+      '@fastify/type-provider-typebox':
+        specifier: ^3.5.0
+        version: 3.5.0(@sinclair/typebox@0.31.17)
       '@magicinsights/common':
         specifier: workspace:^
         version: link:../common
+      '@sinclair/typebox':
+        specifier: ^0.31.17
+        version: 0.31.17
+      ajv:
+        specifier: ^8.12.0
+        version: 8.12.0
       fastify:
         specifier: ^4.23.2
         version: 4.23.2
@@ -82,6 +91,14 @@ packages:
       fast-json-stringify: 5.8.0
     dev: false
 
+  /@fastify/type-provider-typebox@3.5.0(@sinclair/typebox@0.31.17):
+    resolution: {integrity: sha512-f48uGzvLflE/y4pvXOS8qjAC+mZmlqev9CPHnB8NDsBSL4EbeydO61IgPuzOkeNlAYeRP9Y56UOKj1XWFibgMw==}
+    peerDependencies:
+      '@sinclair/typebox': '>=0.26 <=0.31'
+    dependencies:
+      '@sinclair/typebox': 0.31.17
+    dev: false
+
   /@jridgewell/resolve-uri@3.1.1:
     resolution: {integrity: sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==}
     engines: {node: '>=6.0.0'}
@@ -96,6 +113,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: false
+
+  /@sinclair/typebox@0.31.17:
+    resolution: {integrity: sha512-GVYVHHOGINx+DT2DwjXoCQO0mRpztYKyb3d48tucuqhjhHpQYGp7Xx7dhhQGzILx/beuBrzfITMC7/5X7fw+UA==}
     dev: false
 
   /@tsconfig/node10@1.0.9:

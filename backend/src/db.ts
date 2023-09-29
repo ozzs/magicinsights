@@ -7,6 +7,7 @@ import {
   Migrator,
   PostgresDialect,
   FileMigrationProvider,
+  CamelCasePlugin,
 } from "kysely";
 
 export interface Database {
@@ -27,6 +28,7 @@ const dialect = new PostgresDialect({
 
 export const db = new Kysely<Database>({
   dialect,
+  plugins: [new CamelCasePlugin()],
 });
 
 export async function migrateToLatest() {
@@ -55,6 +57,4 @@ export async function migrateToLatest() {
     console.error(error);
     process.exit(1);
   }
-
-  await db.destroy();
 }
