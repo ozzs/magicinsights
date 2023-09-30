@@ -114,7 +114,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 10,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -123,16 +123,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 5,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Ravenclaw",
+          houseName: "Hufflepuff",
           opposingHouse: "Slytherin",
           winOrLoss: "Win",
           pointsEarned: 8,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -141,16 +141,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 3,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Gryffindor",
+          houseName: "Hufflepuff",
           opposingHouse: "Ravenclaw",
           winOrLoss: "Win",
           pointsEarned: 7,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -159,7 +159,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 2,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -168,16 +168,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 6,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Slytherin",
+          houseName: "Hufflepuff",
           opposingHouse: "Hufflepuff",
           winOrLoss: "Loss",
           pointsEarned: 4,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -186,7 +186,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 9,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -195,16 +195,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 1,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Ravenclaw",
+          houseName: "Gryffindor",
           opposingHouse: "Hufflepuff",
           winOrLoss: "Win",
           pointsEarned: 7,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -213,7 +213,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 4,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -222,7 +222,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 8,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -231,16 +231,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 3,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Ravenclaw",
+          houseName: "Gryffindor",
           opposingHouse: "Slytherin",
           winOrLoss: "Win",
           pointsEarned: 6,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -249,7 +249,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 2,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -258,7 +258,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 10,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -267,7 +267,7 @@ async function addQuidditchMatch() {
           winOrLoss: "Loss",
           pointsEarned: 1,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
@@ -276,16 +276,16 @@ async function addQuidditchMatch() {
           winOrLoss: "Win",
           pointsEarned: 9,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
       {
         data: {
-          houseName: "Slytherin",
+          houseName: "Gryffindor",
           opposingHouse: "Hufflepuff",
           winOrLoss: "Loss",
           pointsEarned: 3,
         },
-        eventSchemaID: "quidditchMatch",
+        eventSchemaId: "quidditchMatch",
       },
     ])
     .execute();
@@ -304,7 +304,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -315,7 +315,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -326,7 +326,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -337,7 +337,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -348,7 +348,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -359,7 +359,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -370,7 +370,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -381,7 +381,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -392,7 +392,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -403,7 +403,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -414,7 +414,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -425,7 +425,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -436,7 +436,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -447,7 +447,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -458,7 +458,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -469,7 +469,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -480,7 +480,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -491,7 +491,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -502,7 +502,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Failure",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -513,7 +513,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
       {
         data: {
@@ -524,7 +524,7 @@ async function addSpellCasts() {
           },
           successOrFailure: "Success",
         },
-        eventSchemaID: "spellCast",
+        eventSchemaId: "spellCast",
       },
     ])
     .execute();
@@ -544,7 +544,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 5,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -556,7 +556,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 3,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -568,7 +568,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 8,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -580,7 +580,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 6,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -592,7 +592,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 4,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -604,7 +604,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 5,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -616,7 +616,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 2,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -628,7 +628,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 7,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -640,7 +640,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 4,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -652,7 +652,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 3,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -664,7 +664,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 6,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -676,7 +676,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 5,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -688,7 +688,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 2,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -700,7 +700,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 8,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -712,7 +712,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 4,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -724,7 +724,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 3,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -736,7 +736,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 7,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -748,7 +748,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 6,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -760,7 +760,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Fail",
           timeTaken: 2,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -772,7 +772,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Perfect",
           timeTaken: 8,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
       {
         data: {
@@ -784,7 +784,7 @@ async function addPotionBrewing() {
           brewingSuccess: "Good",
           timeTaken: 7,
         },
-        eventSchemaID: "potionBrewing",
+        eventSchemaId: "potionBrewing",
       },
     ])
     .execute();

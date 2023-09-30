@@ -1,78 +1,102 @@
+import { Chart } from "@magicinsights/common/entities";
 import { Card, BarChart, DonutChart, Title } from "@tremor/react";
 import GridLayout from "react-grid-layout";
+import { useMutation, useQuery } from "react-query";
 import { ResponsiveContainer } from "recharts";
 
 export default function Dashboard() {
-  const layout = [
-    { i: "a", x: 0, y: 0, w: 1, h: 1 },
-    { i: "b", x: 1, y: 0, w: 1, h: 1 },
-    { i: "c", x: 2, y: 0, w: 1, h: 1 },
-  ];
+  const { isLoading, data: charts } = useQuery({
+    queryKey: ["getCharts"],
+    queryFn: async function (): Promise<
+      { chart: Chart; data: { name: string; value: string }[] }[]
+    > {
+      const res = await fetch("/api/charts");
+      return res.json();
+    },
+  });
 
-  const chartdata = [
-    {
-      name: "Amphibians",
-      "Number of threatened species": 2488,
-    },
-    {
-      name: "Birds",
-      "Number of threatened species": 1445,
-    },
-    {
-      name: "Crustaceans",
-      "Number of threatened species": 743,
-    },
-  ];
+  const { mutate } = useMutation({
+    mutationFn: async function (
+      charts: {
+        id: number;
+        x: number;
+        y: number;
+      }[]
+    ) {
+      const res = await fetch("/api/charts/update-positions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ charts }),
+      });
 
-  const cities = [
-    {
-      name: "New York",
-      sales: 9800,
+      const json = await res.json();
+      if (json.error) {
+        throw new Error(json.error);
+      }
+
+      return json;
     },
-    {
-      name: "London",
-      sales: 4567,
-    },
-    {
-      name: "Hong Kong",
-      sales: 3908,
-    },
-    {
-      name: "San Francisco",
-      sales: 2400,
-    },
-    {
-      name: "Singapore",
-      sales: 1908,
-    },
-    {
-      name: "Zurich",
-      sales: 1398,
-    },
-  ];
+  });
+
+  if (!charts || isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <GridLayout
       className="items-center w-[1200px]"
-      layout={layout}
+      layout={charts.map((chart) => ({
+        i: chart.chart.id.toString(),
+        x: chart.chart.x,
+        y: chart.chart.y,
+        w: 1,
+        h: 1,
+      }))}
       cols={2}
       rowHeight={400}
       width={1200}
       isResizable={false}
+      onLayoutChange={(layout) =>
+        mutate(layout.map((l) => ({ id: parseInt(l.i), x: l.x, y: l.y })))
+      }
     >
-      <Card key="a">
-        <Title>Chart 1</Title>
-        <ResponsiveContainer>
-          <BarChart
-            className="h-[95%]"
-            data={chartdata}
-            index="name"
-            categories={["Number of threatened species"]}
-            colors={["blue"]}
-          />
-        </ResponsiveContainer>
-      </Card>
-      <Card key="b">
+      {charts.map((chart) => (
+        <Card key={chart.chart.id}>
+          <Title className="mb-6">{chart.chart.title}</Title>
+          <ResponsiveContainer>
+            {chart.chart.visualization === "bar" ? (
+              <BarChart
+                className="h-[90%]"
+                data={chart.data.map((d) => ({
+                  ...d,
+                  value: parseInt(d.value),
+                }))}
+                index="name"
+                categories={["value"]}
+                colors={["blue"]}
+                showLegend={false}
+              />
+            ) : (
+              <DonutChart
+                className="h-[90%]"
+                variant="pie"
+                data={chart.data.map((d) => ({
+                  ...d,
+                  value: parseInt(d.value),
+                }))}
+                category="value"
+                index="name"
+                colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
+                showLabel={true}
+              />
+            )}
+          </ResponsiveContainer>
+        </Card>
+      ))}
+
+      {/* <Card key="b">
         <Title>Chart 2</Title>
         <ResponsiveContainer>
           <BarChart
@@ -96,7 +120,7 @@ export default function Dashboard() {
             colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
           />
         </ResponsiveContainer>
-      </Card>
+      </Card> */}
     </GridLayout>
   );
 }

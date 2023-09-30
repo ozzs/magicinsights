@@ -8,7 +8,7 @@ import {
 
 export interface EventsTable {
   id: Generated<number>;
-  eventSchemaID: string;
+  eventSchemaId: string;
   data: any;
   created_at: ColumnType<Date, string | undefined, never>;
 }

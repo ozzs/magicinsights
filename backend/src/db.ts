@@ -1,4 +1,8 @@
-import { EventSchemasTable, EventsTable } from "@magicinsights/common/entities";
+import {
+  ChartsTable,
+  EventSchemasTable,
+  EventsTable,
+} from "@magicinsights/common/entities";
 import { Pool } from "pg";
 import * as path from "path";
 import { promises as fs } from "fs";
@@ -13,6 +17,7 @@ import {
 export interface Database {
   eventSchemas: EventSchemasTable;
   events: EventsTable;
+  charts: ChartsTable;
 }
 
 const dialect = new PostgresDialect({

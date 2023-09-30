@@ -14,7 +14,7 @@ export enum ChartVisualization {
 export interface ChartsTable {
   id: Generated<number>;
   title: string;
-  eventSchemaID: string;
+  eventSchemaId: string;
   visualization: ChartVisualization;
   property: string;
   x: number;

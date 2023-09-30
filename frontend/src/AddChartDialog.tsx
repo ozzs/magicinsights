@@ -18,8 +18,12 @@ import {
   Title,
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/outline";
-import { useQuery } from "react-query";
-import { EventSchema } from "@magicinsights/common/entities";
+import { useMutation, useQuery } from "react-query";
+import {
+  ChartVisualization,
+  EventSchema,
+  NewChart,
+} from "@magicinsights/common/entities";
 
 export function AddChartDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +46,27 @@ export function AddChartDialog() {
   const { isLoading, data: eventSchemas } = useQuery({
     queryKey: ["getEventSchemas"],
     queryFn: async function (): Promise<EventSchema[]> {
-      const res = await fetch("http://localhost:3000/event-schemas");
+      const res = await fetch("/api/event-schemas");
       return res.json();
+    },
+  });
+
+  const { mutate } = useMutation({
+    mutationFn: async function (chart: NewChart) {
+      const res = await fetch("/api/charts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chart),
+      });
+
+      const json = await res.json();
+      if (json.error) {
+        throw new Error(json.error);
+      }
+
+      return json;
     },
   });
 
@@ -55,7 +78,16 @@ export function AddChartDialog() {
   const [visualization, setVisualization] = useState("bar");
 
   function addChart() {
-    console.log(title, eventSchema?.id, selectedProperty);
+    mutate({
+      title,
+      eventSchemaId: eventSchema!.id,
+      property: selectedProperty,
+      visualization: visualization as ChartVisualization,
+      x: 0,
+      y: 0,
+    });
+
+    setIsOpen(false);
   }
 
   if (isLoading || !eventSchemas) {
