@@ -1,12 +1,4 @@
-import {
-  Card,
-  Title,
-  Text,
-  Grid,
-  Col,
-  Select,
-  SelectItem,
-} from "@tremor/react";
+import { Title, Text, Grid, Col } from "@tremor/react";
 import AddEventSchema from "./AddEventSchema";
 import { PushEvent } from "./PushEvent";
 
