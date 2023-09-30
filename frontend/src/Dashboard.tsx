@@ -52,53 +52,51 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="p-4 flex justify-center">
-      <GridLayout
-        className="items-center w-[1200px]"
-        layout={layout}
-        cols={2}
-        rowHeight={400}
-        width={1200}
-        isResizable={false}
-      >
-        <Card key="a">
-          <Title>Chart 1</Title>
-          <ResponsiveContainer>
-            <BarChart
-              className="h-[95%]"
-              data={chartdata}
-              index="name"
-              categories={["Number of threatened species"]}
-              colors={["blue"]}
-            />
-          </ResponsiveContainer>
-        </Card>
-        <Card key="b">
-          <Title>Chart 2</Title>
-          <ResponsiveContainer>
-            <BarChart
-              className="h-[95%]"
-              data={chartdata}
-              index="name"
-              categories={["Number of threatened species"]}
-              colors={["blue"]}
-            />
-          </ResponsiveContainer>
-        </Card>
-        <Card key="c">
-          <Title>Chart 3</Title>
-          <ResponsiveContainer>
-            <DonutChart
-              className="h-[95%]"
-              variant="pie"
-              data={cities}
-              category="sales"
-              index="name"
-              colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
-            />
-          </ResponsiveContainer>
-        </Card>
-      </GridLayout>
-    </div>
+    <GridLayout
+      className="items-center w-[1200px]"
+      layout={layout}
+      cols={2}
+      rowHeight={400}
+      width={1200}
+      isResizable={false}
+    >
+      <Card key="a">
+        <Title>Chart 1</Title>
+        <ResponsiveContainer>
+          <BarChart
+            className="h-[95%]"
+            data={chartdata}
+            index="name"
+            categories={["Number of threatened species"]}
+            colors={["blue"]}
+          />
+        </ResponsiveContainer>
+      </Card>
+      <Card key="b">
+        <Title>Chart 2</Title>
+        <ResponsiveContainer>
+          <BarChart
+            className="h-[95%]"
+            data={chartdata}
+            index="name"
+            categories={["Number of threatened species"]}
+            colors={["blue"]}
+          />
+        </ResponsiveContainer>
+      </Card>
+      <Card key="c">
+        <Title>Chart 3</Title>
+        <ResponsiveContainer>
+          <DonutChart
+            className="h-[95%]"
+            variant="pie"
+            data={cities}
+            category="sales"
+            index="name"
+            colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
+          />
+        </ResponsiveContainer>
+      </Card>
+    </GridLayout>
   );
 }
