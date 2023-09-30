@@ -129,3 +129,45 @@
     place-items: center;
   }
   
+
+
+/* .form-group */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+legend {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+fieldset {
+  border: 1px solid #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.control-label {
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+form .btn {
+ background-color: rgb(59, 130, 246);
+ color:white;
+ border-radius: 6px;
+ padding: 8px 16px;
+ float: right;
+ margin-bottom: 10px;
+}

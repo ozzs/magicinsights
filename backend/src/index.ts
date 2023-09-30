@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import { db, migrateToLatest } from "./db";
 import Validator, { SchemaObject } from "ajv";
-import { ChartVisualization } from "@magicinsights/common/entities";
+import { ChartVisualization, NewEvent } from "@magicinsights/common/entities";
 import { sql } from "kysely";
 
 const server = fastify();
@@ -78,48 +78,43 @@ server.delete<{ Params: DeleteEventSchemaRequest }>(
 );
 
 // TODO: Split to events.ts
-interface NewEventRequest {
-  schemaID: string;
-  data: any;
-}
+server.post<{ Body: NewEvent }>("/api/events", async function (request, reply) {
+  const validator = new Validator({
+    strict: true,
+    allErrors: true,
+    strictSchema: true,
+  });
 
-server.post<{ Body: NewEventRequest }>(
-  "/api/events",
-  async function (request, reply) {
-    const validator = new Validator({
-      strict: true,
-      allErrors: true,
-      strictSchema: true,
-    });
+  // Get schema from DB
+  const eventSchema = await db
+    .selectFrom("eventSchemas")
+    .selectAll()
+    .where("id", "=", request.body.eventSchemaId)
+    .executeTakeFirst();
 
-    // Get schema from DB
-    const eventSchema = await db
-      .selectFrom("eventSchemas")
-      .selectAll()
-      .where("id", "=", request.body.schemaID)
-      .executeTakeFirst();
-
-    if (!eventSchema) {
-      reply.status(404);
-      reply.send({ error: "Event schema not found" });
-      return;
-    }
-
-    if (!validator.validate(eventSchema.schema, request.body.data)) {
-      reply.status(400);
-      reply.send({ error: validator.errors });
-      return;
-    }
-
-    await db
-      .insertInto("events")
-      .values({ eventSchemaId: request.body.schemaID, data: request.body.data })
-      .execute();
-
-    reply.status(201);
-    reply.send({ status: "OK" });
+  if (!eventSchema) {
+    reply.status(404);
+    reply.send({ error: "Event schema not found" });
+    return;
   }
-);
+
+  if (!validator.validate(eventSchema.schema, request.body.data)) {
+    reply.status(400);
+    reply.send({ error: validator.errors });
+    return;
+  }
+
+  await db
+    .insertInto("events")
+    .values({
+      eventSchemaId: request.body.eventSchemaId,
+      data: request.body.data,
+    })
+    .execute();
+
+  reply.status(201);
+  reply.send({ status: "OK" });
+});
 
 // TODO: Split to charts.ts
 interface NewChartRequest {

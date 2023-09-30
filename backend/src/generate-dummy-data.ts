@@ -59,7 +59,7 @@ async function addSchemas() {
               enum: ["Success", "Failure"],
             },
           },
-          required: ["houseName", "spell", "successOrFailure"],
+          required: ["spell", "successOrFailure"],
           additionalProperties: false,
         },
       },
