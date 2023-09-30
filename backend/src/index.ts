@@ -6,7 +6,6 @@ import { sql } from "kysely";
 
 const server = fastify();
 
-// TODO: Split to event-schemas.ts
 interface NewEventSchemaRequest {
   id: string;
   schema: SchemaObject;
@@ -77,7 +76,6 @@ server.delete<{ Params: DeleteEventSchemaRequest }>(
   }
 );
 
-// TODO: Split to events.ts
 server.post<{ Body: NewEvent }>("/api/events", async function (request, reply) {
   const validator = new Validator({
     strict: true,
@@ -116,7 +114,6 @@ server.post<{ Body: NewEvent }>("/api/events", async function (request, reply) {
   reply.send({ status: "OK" });
 });
 
-// TODO: Split to charts.ts
 interface NewChartRequest {
   title: string;
   eventSchemaId: string;
@@ -161,7 +158,6 @@ server.get("/api/charts", async function (request, reply) {
 server.post<{ Body: NewChartRequest }>(
   "/api/charts",
   async function (request, reply) {
-    // TODO: Validate request body
     await db.insertInto("charts").values(request.body).execute();
 
     reply.status(201);
@@ -172,7 +168,6 @@ server.post<{ Body: NewChartRequest }>(
 server.post<{ Body: UpdateChartPositionsRequest }>(
   "/api/charts/update-positions",
   async function (request, reply) {
-    // TODO: Validate request body
     for (const chart of request.body.charts) {
       await db
         .updateTable("charts")

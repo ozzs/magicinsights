@@ -10,15 +10,9 @@ importers:
 
   backend:
     dependencies:
-      '@fastify/type-provider-typebox':
-        specifier: ^3.5.0
-        version: 3.5.0(@sinclair/typebox@0.31.17)
       '@magicinsights/common':
         specifier: workspace:^
         version: link:../common
-      '@sinclair/typebox':
-        specifier: ^0.31.17
-        version: 0.31.17
       ajv:
         specifier: ^8.12.0
         version: 8.12.0
@@ -648,14 +642,6 @@ packages:
       fast-json-stringify: 5.8.0
     dev: false
 
-  /@fastify/type-provider-typebox@3.5.0(@sinclair/typebox@0.31.17):
-    resolution: {integrity: sha512-f48uGzvLflE/y4pvXOS8qjAC+mZmlqev9CPHnB8NDsBSL4EbeydO61IgPuzOkeNlAYeRP9Y56UOKj1XWFibgMw==}
-    peerDependencies:
-      '@sinclair/typebox': '>=0.26 <=0.31'
-    dependencies:
-      '@sinclair/typebox': 0.31.17
-    dev: false
-
   /@floating-ui/core@1.5.0:
     resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
     dependencies:
@@ -888,10 +874,6 @@ packages:
       ajv-formats: 2.1.1(ajv@8.12.0)
       lodash: 4.17.21
       lodash-es: 4.17.21
-    dev: false
-
-  /@sinclair/typebox@0.31.17:
-    resolution: {integrity: sha512-GVYVHHOGINx+DT2DwjXoCQO0mRpztYKyb3d48tucuqhjhHpQYGp7Xx7dhhQGzILx/beuBrzfITMC7/5X7fw+UA==}
     dev: false
 
   /@tremor/react@3.8.1(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3):
