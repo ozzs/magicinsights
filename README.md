@@ -2,9 +2,8 @@
   <img src="https://github.com/ozzs/magicinsights/blob/main/frontend/public/logo-blue.png" width="500">
 </p>
 
-<p align="center">
-  <img src="https://github.com/ozzs/magicinsights/blob/main/showcase.mov"  height="400" />
-</p>
+https://github.com/ozzs/magicinsights/assets/11197251/818c176d-a878-47a9-b178-937a0f14ddf9
+
 <br />
 
 <p align="center">
