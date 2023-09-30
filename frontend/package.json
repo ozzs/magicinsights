@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@magicinsights/frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.25.4",
     "@heroicons/react": "^1.0.6",
+    "@magicinsights/common": "workspace:^",
     "@tremor/react": "^3.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

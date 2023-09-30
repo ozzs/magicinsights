@@ -19,6 +19,7 @@ import {
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/outline";
 import { useQuery } from "react-query";
+import { EventSchema } from "@magicinsights/common/entities";
 
 export function AddChartDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,21 +41,24 @@ export function AddChartDialog() {
 
   const { isLoading, data: eventSchemas } = useQuery({
     queryKey: ["getEventSchemas"],
-    queryFn: async function () {
+    queryFn: async function (): Promise<EventSchema[]> {
       const res = await fetch("http://localhost:3000/event-schemas");
       return res.json();
     },
   });
 
   const [title, setTitle] = useState("");
-  const [eventSchema, setEventSchema] = useState(null);
+  const [eventSchema, setEventSchema] = useState<EventSchema | undefined>(
+    undefined
+  );
   const [selectedProperty, setSelectedProperty] = useState("");
+  const [visualization, setVisualization] = useState("bar");
 
   function addChart() {
-    console.log(title, eventSchema.id, selectedProperty);
+    console.log(title, eventSchema?.id, selectedProperty);
   }
 
-  if (isLoading) {
+  if (isLoading || !eventSchemas) {
     return null;
   }
 
@@ -91,12 +95,23 @@ export function AddChartDialog() {
                 </div>
 
                 <div className="mt-4">
+                  <div className="mb-2 text-sm">Visualization</div>
+                  <Select
+                    value={visualization}
+                    onValueChange={(value) => setVisualization(value)}
+                  >
+                    <SelectItem value="bar">Bar Chart</SelectItem>
+                    <SelectItem value="pie">Pie Chart</SelectItem>
+                  </Select>
+                </div>
+
+                <div className="mt-4">
                   <div className="mb-2 text-sm">Event Type</div>
                   <Select
                     value={eventSchema?.id}
                     onValueChange={(schemaID) =>
                       setEventSchema(
-                        eventSchemas.find((schema) => schema.id === schemaID)
+                        eventSchemas?.find((schema) => schema.id === schemaID)
                       )
                     }
                   >
@@ -119,7 +134,10 @@ export function AddChartDialog() {
                   >
                     {eventSchema
                       ? Object.entries(eventSchema?.schema.properties)
-                          .filter(([_, property]) => property.type === "string")
+                          .filter(
+                            ([_, property]: [string, any]) =>
+                              property.type === "string"
+                          )
                           .map(([propertyName, _]) => (
                             <SelectItem key={propertyName} value={propertyName}>
                               {propertyName}
