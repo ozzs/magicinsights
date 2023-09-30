@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/ozzs/magicinsights/blob/main/intro.gif"  height="400" />
+  <img src="https://github.com/ozzs/magicinsights/blob/main/showcase.mov"  height="400" />
 </p>
 <br />
 
@@ -27,22 +27,26 @@ docker-compose up
 ```
 
 ### For the backend and database migrations
+
 ```
 cd server && npm run dev
 npm run generate-dummy-data
 ```
 
 ### For the frontend
+
 ```
 cd frontend && npm run dev
 ```
 
 ### To delete the postgres database and its data
+
 ```
 docker-compose down -v
 ```
 
 ## Limitations
-* No support for creating charts on a nested JSON property - only top level
-* Charts - input validation is not 100% in REST API
-* Error handling in UI/Admin - not 100% - doesn't always show errors
+
+- No support for creating charts on a nested JSON property - only top level
+- Charts - input validation is not 100% in REST API
+- Error handling in UI/Admin - not 100% - doesn't always show errors
