@@ -18,7 +18,7 @@ import {
   Title,
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/outline";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   ChartVisualization,
   EventSchema,
@@ -51,6 +51,8 @@ export function AddChartDialog() {
     },
   });
 
+  const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: async function (chart: NewChart) {
       const res = await fetch("/api/charts", {
@@ -67,6 +69,9 @@ export function AddChartDialog() {
       }
 
       return json;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["getCharts"] });
     },
   });
 
