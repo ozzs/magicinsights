@@ -18,6 +18,7 @@ import {
   Title,
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/outline";
+import { useQuery } from "react-query";
 
 export function AddChartDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,26 @@ export function AddChartDialog() {
     role,
     dismiss,
   ]);
+
+  const { isLoading, data: eventSchemas } = useQuery({
+    queryKey: ["getEventSchemas"],
+    queryFn: async function () {
+      const res = await fetch("http://localhost:3000/event-schemas");
+      return res.json();
+    },
+  });
+
+  const [title, setTitle] = useState("");
+  const [eventSchema, setEventSchema] = useState(null);
+  const [selectedProperty, setSelectedProperty] = useState("");
+
+  function addChart() {
+    console.log(title, eventSchema.id, selectedProperty);
+  }
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <>
@@ -58,33 +79,63 @@ export function AddChartDialog() {
                 {...getFloatingProps()}
               >
                 <Title className="text-2xl">Add Chart</Title>
-                <Subtitle>Here you can add charts</Subtitle>
+                <Subtitle>Visualize your events</Subtitle>
 
                 <div className="mt-6">
                   <div className="mb-2 text-sm">Chart Title</div>
-                  <TextInput placeholder="My magical chart..." />
+                  <TextInput
+                    placeholder="My magical chart..."
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
                 </div>
 
                 <div className="mt-4">
                   <div className="mb-2 text-sm">Event Type</div>
-                  <Select>
-                    <SelectItem value="1">spellCast</SelectItem>
-                    <SelectItem value="2">quidditchMatch</SelectItem>
-                    <SelectItem value="3">blabla</SelectItem>
+                  <Select
+                    value={eventSchema?.id}
+                    onValueChange={(schemaID) =>
+                      setEventSchema(
+                        eventSchemas.find((schema) => schema.id === schemaID)
+                      )
+                    }
+                  >
+                    {eventSchemas.map((schema) => (
+                      <SelectItem key={schema.id} value={schema.id}>
+                        {schema.id}
+                      </SelectItem>
+                    ))}
                   </Select>
                 </div>
 
                 <div className="mt-4">
                   <div className="mb-2 text-sm">Property</div>
-                  <Select>
-                    <SelectItem value="1">houseName</SelectItem>
-                    <SelectItem value="2">opposingHouse</SelectItem>
-                    <SelectItem value="3">winLose</SelectItem>
+                  <Select
+                    disabled={!eventSchema}
+                    value={selectedProperty}
+                    onValueChange={(propertyName) =>
+                      setSelectedProperty(propertyName)
+                    }
+                  >
+                    {eventSchema
+                      ? Object.entries(eventSchema?.schema.properties)
+                          .filter(([_, property]) => property.type === "string")
+                          .map(([propertyName, _]) => (
+                            <SelectItem key={propertyName} value={propertyName}>
+                              {propertyName}
+                            </SelectItem>
+                          ))
+                      : []}
                   </Select>
                 </div>
 
                 <div className="mt-8 self-end">
-                  <Button>Add Chart</Button>
+                  <Button
+                    disabled={!title || !eventSchema || !selectedProperty}
+                    onClick={() => addChart()}
+                  >
+                    Add Chart
+                  </Button>
                 </div>
               </div>
             </FloatingFocusManager>

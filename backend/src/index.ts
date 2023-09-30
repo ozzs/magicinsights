@@ -14,6 +14,16 @@ interface DeleteEventSchemaRequest {
   id: string;
 }
 
+server.get("/event-schemas", async function (request, reply) {
+  const eventSchemas = await db
+    .selectFrom("eventSchemas")
+    .selectAll()
+    .execute();
+
+  reply.status(200);
+  reply.send(eventSchemas);
+});
+
 server.post<{ Body: NewEventSchemaRequest }>(
   "/event-schemas",
   async function (request, reply) {
